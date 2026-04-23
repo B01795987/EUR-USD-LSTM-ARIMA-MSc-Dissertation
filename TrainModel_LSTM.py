@@ -41,14 +41,6 @@ def inverse_transform(preds, scaler, n_features):
 
 
 def build_model(input_shape):
-    """
-    Improved architecture:
-    - Asymmetric LSTM layers (128 → 64) — larger first layer captures broad patterns,
-      smaller second layer refines them
-    - Higher dropout (0.3) — more regularisation to combat overfitting
-    - Extra Dense(32) layer — gives model more capacity before final output
-    - Lower learning rate (0.0005) — more careful weight updates
-    """
     model = Sequential([
         LSTM(128, return_sequences=True, input_shape=input_shape),
         Dropout(0.3),
